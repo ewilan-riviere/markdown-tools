@@ -84,7 +84,7 @@ export default {
     return {
       data: "",
       renderOutput: null,
-      debug: false
+      debug: false,
     };
   },
   methods: {
@@ -93,7 +93,7 @@ export default {
 
       Array.prototype.slice
         .call(render.firstChild.attributes)
-        .forEach(function(attr) {
+        .forEach(function (attr) {
           // remove each attribute
           render.firstChild.removeAttribute(attr.name);
         });
@@ -104,22 +104,22 @@ export default {
 
       this.renderOutput = renderFormat;
     },
-    onCopy: function(e) {
+    onCopy: function (e) {
       let toast = this.$toasted.show(
         "Success!<br/>Check Console if you want some infos.",
         {
           theme: "toasted-primary",
           position: "bottom-right",
-          duration: 5000
+          duration: 5000,
         }
       );
       console.log(e.text);
       toast;
     },
-    onError: function() {
+    onError: function () {
       alert("Failed to copy texts");
-    }
-  }
+    },
+  },
 };
 </script>
 

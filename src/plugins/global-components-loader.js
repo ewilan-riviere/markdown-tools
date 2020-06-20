@@ -6,12 +6,9 @@ const components = require.context(
   /[a-z]\w+\.(vue)$/
 );
 
-components.keys().forEach(fileName => {
+components.keys().forEach((fileName) => {
   const componentConfig = components(fileName);
-  const componentName = fileName
-    .split("/")
-    .pop()
-    .split(".")[0];
+  const componentName = fileName.split("/").pop().split(".")[0];
 
   Vue.component(componentName, componentConfig.default || componentConfig);
 });

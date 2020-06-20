@@ -29,33 +29,33 @@ export default {
     name: {
       type: String,
       required: true,
-      default: "github"
+      default: "github",
     },
     baseline: {
       type: Boolean,
-      default: false
+      default: false,
     },
     width: {
       type: [Number, String],
-      default: 18
+      default: 18,
     },
     height: {
       type: [Number, String],
-      default: 18
+      default: 18,
     },
     variant: {
       type: String,
-      default: "default"
+      default: "default",
     },
     badge: {
       type: [String, Number],
-      default: ""
+      default: "",
     },
     text: {
       type: String,
-      default: ""
-    }
-  }
+      default: "",
+    },
+  },
 };
 </script>
 

@@ -52,12 +52,12 @@
     <transition name="fade">
       <div>
         <hr class="mt-10 mb-16" />
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-10">
           <div class="align">
             <div class="text-2xl mb-5 text-center">
               Preview
             </div>
-            <div class="border border-2 border-black p-5 rounded">
+            <div class="border border-2 border-black p-5 rounded markdown-body">
               <div ref="output">
                 <vue-markdown :source="data"></vue-markdown>
               </div>
@@ -67,7 +67,10 @@
             <div class="text-2xl mb-5 text-center">
               HTML code
             </div>
-            <pre>{{ renderOutput }}</pre>
+            <code class="text-left">
+              <pre v-if="renderOutput">{{ renderOutput }}</pre>
+              <pre v-else>Waiting input.</pre>
+            </code>
           </div>
         </div>
       </div>
@@ -111,11 +114,12 @@ export default {
   watch: {
     // eslint-disable-next-line no-unused-vars
     data(newValue, oldValue) {
-      // console.log(newValue);
-      // console.log(oldValue);
-      // console.log(this.$refs.output);
+      let raw = this.$refs.output.innerHTML;
+      // let formatRaw = this.process(raw)
 
-      this.renderOutput = this.$refs.output.innerHTML;
+      let result = this.$beautify(raw);
+      console.log(result);
+      this.renderOutput = result;
     }
   }
 };
@@ -124,5 +128,9 @@ export default {
 <style scoped>
 .align {
   text-align: left;
+}
+pre {
+  word-wrap: anywhere;
+  white-space: break-spaces;
 }
 </style>

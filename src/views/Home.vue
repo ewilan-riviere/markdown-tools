@@ -1,7 +1,7 @@
 <template>
   <div class="home p-5">
     <div class="flex">
-      <div class="flex justify-between mx-auto w-3/12 mb-10">
+      <div class="flex justify-between mx-auto w-1/2 lg:w-3/12 mb-10">
         <icon-base name="markdown" height="100" width="100"></icon-base>
         <icon-base
           name="heart"
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <label class="block">
         <span class="text-gray-700 text-2xl mb-5 block"
           >Copy Markdown here</span
@@ -24,7 +24,6 @@
           rows="10"
           placeholder="Copy here markdown code..."
           v-model="data"
-          @change="convertToOutput()"
         ></textarea>
       </label>
 
@@ -35,30 +34,30 @@
           v-clipboard:copy="renderOutput"
           v-clipboard:success="onCopy"
           v-clipboard:error="onError"
+          @click="convertHtml()"
         >
           Copy HTML code
         </button>
-
-        <!-- <button
+        <button
           class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-2 transition-colors duration-300"
           type="button"
           @click="debug = !debug"
         >
           Debug
-        </button> -->
+        </button>
       </div>
     </div>
 
     <transition name="fade">
-      <div>
+      <div :class="{ hidden: !debug }">
         <hr class="mt-10 mb-16" />
-        <div class="grid grid-cols-2 gap-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div class="align">
             <div class="text-2xl mb-5 text-center">
               Preview
             </div>
             <div class="border border-2 border-black p-5 rounded markdown-body">
-              <div ref="output">
+              <div ref="output" id="htmlOutput">
                 <vue-markdown :source="data"></vue-markdown>
               </div>
             </div>
@@ -69,7 +68,7 @@
             </div>
             <code class="text-left">
               <pre v-if="renderOutput">{{ renderOutput }}</pre>
-              <pre v-else>Waiting input.</pre>
+              <pre v-else>Click on convert button</pre>
             </code>
           </div>
         </div>
@@ -83,17 +82,23 @@ export default {
   name: "Home",
   data() {
     return {
-      data: null,
+      data: "",
       renderOutput: null,
       debug: false
     };
   },
-  mounted() {
-    console.clear();
-  },
   methods: {
-    convertToOutput() {
-      this.renderOutput = this.$refs.output.innerHTML;
+    convertHtml() {
+      let render = document.getElementById("htmlOutput");
+      render = render.innerHTML;
+
+      let renderFormat = this.$beautify(render);
+
+      if (renderFormat.includes(`data-v-fae5bece=""`)) {
+        renderFormat = renderFormat.replace(` data-v-fae5bece=""`, "");
+      }
+
+      this.renderOutput = renderFormat;
     },
     onCopy: function(e) {
       let toast = this.$toasted.show(
@@ -109,17 +114,6 @@ export default {
     },
     onError: function() {
       alert("Failed to copy texts");
-    }
-  },
-  watch: {
-    // eslint-disable-next-line no-unused-vars
-    data(newValue, oldValue) {
-      let raw = this.$refs.output.innerHTML;
-      // let formatRaw = this.process(raw)
-
-      let result = this.$beautify(raw);
-      console.log(result);
-      this.renderOutput = result;
     }
   }
 };

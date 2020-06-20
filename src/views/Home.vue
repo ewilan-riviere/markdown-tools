@@ -90,13 +90,17 @@ export default {
   methods: {
     convertHtml() {
       let render = document.getElementById("htmlOutput");
+
+      Array.prototype.slice
+        .call(render.firstChild.attributes)
+        .forEach(function(attr) {
+          // remove each attribute
+          render.firstChild.removeAttribute(attr.name);
+        });
+
       render = render.innerHTML;
 
       let renderFormat = this.$beautify(render);
-
-      if (renderFormat.includes(`data-v-fae5bece=""`)) {
-        renderFormat = renderFormat.replace(` data-v-fae5bece=""`, "");
-      }
 
       this.renderOutput = renderFormat;
     },

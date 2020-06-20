@@ -24,12 +24,12 @@
 
 <script>
 export default {
-  name: "IconBase",
+  name: 'IconBase',
   props: {
     name: {
       type: String,
       required: true,
-      default: "github",
+      default: 'github',
     },
     baseline: {
       type: Boolean,
@@ -45,21 +45,21 @@ export default {
     },
     variant: {
       type: String,
-      default: "default",
+      default: 'default',
     },
     badge: {
       type: [String, Number],
-      default: "",
+      default: '',
     },
     text: {
       type: String,
-      default: "",
+      default: '',
     },
   },
-};
+}
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .svg-icon {
   position: relative;
   display: inline-flex;

@@ -1,24 +1,10 @@
 <template>
   <div class="p-5 home">
-    <div class="flex">
-      <div class="flex justify-between w-1/2 mx-auto mb-10 lg:w-3/12">
-        <icon-base name="markdown" height="100" width="100"></icon-base>
-        <icon-base
-          name="heart"
-          height="100"
-          width="100"
-          variant="text-red-600"
-        ></icon-base>
-        <div class="text-6xl font-bold">
-          U
-        </div>
-      </div>
-    </div>
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <label class="block">
-        <span class="block mb-5 text-2xl text-gray-700"
-          >Copy Markdown here</span
-        >
+        <span class="block mb-5 text-2xl text-gray-700">
+          Copy Markdown here
+        </span>
         <textarea
           class="block w-full mt-1 form-textarea"
           rows="10"
@@ -68,7 +54,19 @@
             </div>
             <code class="text-left">
               <pre v-if="renderOutput">{{ renderOutput }}</pre>
-              <pre v-else>Click on convert button</pre>
+              <div v-else class="flex font-mono">
+                <div class="my-auto">
+                  Click on this button
+                </div>
+                <div
+                  class="px-4 py-2 mx-2 font-bold text-white transition-colors duration-300 bg-blue-500 rounded"
+                >
+                  Copy HTML code
+                </div>
+                <div class="my-auto">
+                  to see HTML code
+                </div>
+              </div>
             </code>
           </div>
         </div>
@@ -106,7 +104,7 @@ export default {
     },
     onCopy: function (e) {
       let toast = this.$toasted.show(
-        'Success!<br/>Check Console if you want some infos.',
+        'Success, code is in your clipboard!<br/>Check Console if you want some infos.',
         {
           theme: 'toasted-primary',
           position: 'bottom-right',

@@ -1,15 +1,32 @@
 <template>
-  <div id="app" class="container mx-auto">
-    <markdown-converter></markdown-converter>
+  <div id="app" class="h-screen">
+    <div class="container mx-auto content">
+      <header-md></header-md>
+      <router-view></router-view>
+    </div>
+
+    <footer-md class="footer"></footer-md>
   </div>
 </template>
 
 <script>
-import markdownConverter from '@/components/markdown-converter.vue'
+import FooterMd from '@/components/footer-md.vue'
+import HeaderMd from '@/components/header-md.vue'
 
 export default {
   components: {
-    markdownConverter,
+    FooterMd,
+    HeaderMd,
   },
 }
 </script>
+
+<style>
+html,
+body {
+  height: 100%;
+}
+.content {
+  min-height: calc(100% - 8%);
+}
+</style>

@@ -13,6 +13,12 @@
     opacity: 0;
 }
 
+a {
+    @apply outline-none;
+}
+
 @responsive {
-    .container {}
+    .w-max-content {
+        width: max-content;
+    }
 }

@@ -4,7 +4,7 @@
 [![yarn](https://img.shields.io/static/v1?label=Yarn&message=v1.22&color=2C8EBB&style=flat-square&logo=yarn&logoColor=ffffff)](https://yarnpkg.com/lang/en/)
 
 [![vuepress](https://img.shields.io/static/v1?label=Vue.js&message=v2.6&color=4FC08D&style=flat-square&logo=vue.js&logoColor=ffffff)](https://vuejs.org/)
-[![tailwindcss](https://img.shields.io/static/v1?label=Tailwind%20CSS&message=v1.4&color=38B2AC&style=flat-square&logo=vue.js&logoColor=ffffff)](https://tailwindcss.com/)
+[![tailwindcss](https://img.shields.io/static/v1?label=Tailwind%20CSS&message=v1.4&color=38B2AC&style=flat-square&logo=tailwind-css&logoColor=ffffff)](https://tailwindcss.com/)
 
 This project allow user to paste markdown code into textarea and convert it to HTML code directly to clipboard.
 

@@ -1,6 +1,15 @@
 {
   "name": "markdown-interpreter",
-  "version": "0.1.0",
+  "author": {
+    "name": "Ewilan 'EwieFairy' Rivière",
+    "email": "ewilan@dotslashplay.it",
+    "url": "https://github.com/ewilan-riviere"
+  },
+  "homepage": "https://md-interpreter.git-projects.xyz/",
+  "repository": {
+    "url": "https://github.com/ewilan-riviere/markdown-interpreter"
+  },
+  "version": "1.0",
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",

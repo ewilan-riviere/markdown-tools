@@ -66,6 +66,19 @@
           turndown
         </a>
       </span>
+      <a
+        class="my-auto ml-3"
+        href="https://github.com/ewilan-riviere/markdown-interpreter"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <icon-base
+          name="github"
+          height="20"
+          width="20"
+          variant="text-gray-500"
+        ></icon-base>
+      </a>
     </div>
   </footer>
 </template>

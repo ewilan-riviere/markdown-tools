@@ -10,7 +10,7 @@
     "url": "https://github.com/ewilan-riviere/markdown-interpreter"
   },
   "license": "MIT",
-  "version": "v1.0.0",
+  "version": "1.0.01",
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",

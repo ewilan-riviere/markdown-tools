@@ -105,8 +105,15 @@ export default {
     },
   },
   robots: {
-    // Disallow: '',
     Sitemap: `${process.env.BASE_URL}/sitemap.xml`,
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: process.env.BASE_URL,
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: false,
+    exclude: ['**'],
   },
   markdownit: {
     preset: 'default',

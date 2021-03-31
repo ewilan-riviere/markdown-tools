@@ -27,11 +27,10 @@
           <div
             class="max-w-md px-4 mx-auto sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0"
           >
-            <!-- Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ -->
             <img
               class="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-              src="https://tailwindui.com/img/component-images/cloud-illustration-indigo-400.svg"
-              alt=""
+              src="/images/hero-picture.svg"
+              alt="Hero picture"
             />
           </div>
         </div>

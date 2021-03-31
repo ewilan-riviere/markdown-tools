@@ -6,7 +6,12 @@
       <div
         class="flex justify-center w-full h-6 mt-12 space-x-6 lg:w-auto lg:order-2 lg:mt-0"
       >
-        <a href="#" class="text-gray-400 hover:text-gray-500">
+        <a
+          href="https://twitter.com/ewilanriviere"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-gray-500"
+        >
           <span class="sr-only">Twitter</span>
           <svg
             class="w-6 h-6"
@@ -20,7 +25,12 @@
           </svg>
         </a>
 
-        <a href="#" class="text-gray-400 hover:text-gray-500">
+        <a
+          href="https://github.com/ewilan-riviere"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-gray-500"
+        >
           <span class="sr-only">GitHub</span>
           <svg
             class="w-6 h-6"

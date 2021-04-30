@@ -59,8 +59,8 @@
             >
               <img
                 class="block w-auto h-8 lg:hidden"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                alt="Workflow"
+                src="/icons/md-logo-dark.svg"
+                alt="Markdown Interpreter"
               />
               <img
                 class="hidden w-auto h-8 text-white fill-current lg:block"

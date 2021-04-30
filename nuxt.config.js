@@ -57,8 +57,6 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    // '@nuxt/content',
     // https://www.npmjs.com/package/@nuxtjs/robots
     '@nuxtjs/robots',
     // https://sitemap.nuxtjs.org/guide/setup
@@ -87,16 +85,6 @@ export default {
       // theme_color: settings.metadata.color,
     },
   },
-  // Content module configuration: https://go.nuxtjs.dev/config-content
-  // content: {
-  //   liveEdit: false,
-  //   markdown: {
-  //     remarkPlugins: ['remark-directive'],
-  //     prism: {
-  //       theme: 'prism-themes/themes/prism-vsc-dark-plus.css',
-  //     },
-  //   },
-  // },
   robots: {
     Sitemap: `${process.env.BASE_URL}/sitemap.xml`,
   },

@@ -46,6 +46,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
+    "nuxt-brotli": "^1.1.7",
     "postcss": "^8.2.13",
     "prettier": "^2.2.1"
   }

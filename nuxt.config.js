@@ -69,8 +69,18 @@ export default {
     '@nuxtjs/toast',
     // https://github.com/nuxt-community/svg-module
     '@nuxtjs/svg',
-    // https://github.com/daliborgogic/nuxt-brotli
-    'nuxt-brotli',
+    // https://github.com/robcresswell/nuxt-compress
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          threshold: 8192,
+        },
+        brotli: {
+          threshold: 8192,
+        },
+      },
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

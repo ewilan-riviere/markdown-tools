@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div
-      class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:flex lg:items-center lg:justify-between lg:px-8"
+      class="mx-auto max-w-7xl sm:px-6 lg:flex lg:items-center lg:justify-between"
     >
       <div
         class="flex justify-center w-full h-6 mt-12 space-x-6 lg:w-auto lg:order-2 lg:mt-0"
@@ -73,7 +73,15 @@
             </a>
           </div>
           <span class="hidden mx-1 lg:block">·</span>
-          <div class="mr-1">Ewilan Rivière. MIT Licensed.</div>
+          <div class="mr-1">
+            <a
+              href="https://github.com/ewilan-riviere"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 transition-colors duration-100 hover:text-gray-200"
+              >Ewilan Rivière</a
+            >. MIT Licensed.
+          </div>
           <div class="flex-wrap justify-center lg:flex">
             <span>Powered by</span>
             <a
@@ -100,7 +108,7 @@
 
 <script>
 export default {
-  name: 'VFooter',
+  name: 'AppFooter',
   data() {
     return {
       licenses: [

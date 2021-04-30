@@ -1,7 +1,9 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Markdown Interpreter',
@@ -22,12 +24,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    // https://github.com/teazean/vue-beautify
-    { src: '~/plugins/js-beautify' },
-    // https://github.com/mercs600/vue2-perfect-scrollbar
-    { src: '~/plugins/vue-perfect-scrollbar' },
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -38,12 +35,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    // https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
     // https://google-fonts.nuxtjs.org/
     '@nuxtjs/google-fonts',
-    // https://color-mode.nuxtjs.org/#setup
-    '@nuxtjs/color-mode',
   ],
 
   tailwindcss: {
@@ -65,7 +58,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
+    // '@nuxt/content',
     // https://www.npmjs.com/package/@nuxtjs/robots
     '@nuxtjs/robots',
     // https://sitemap.nuxtjs.org/guide/setup
@@ -95,15 +88,15 @@ export default {
     },
   },
   // Content module configuration: https://go.nuxtjs.dev/config-content
-  content: {
-    liveEdit: false,
-    markdown: {
-      remarkPlugins: ['remark-directive'],
-      prism: {
-        theme: 'prism-themes/themes/prism-vsc-dark-plus.css',
-      },
-    },
-  },
+  // content: {
+  //   liveEdit: false,
+  //   markdown: {
+  //     remarkPlugins: ['remark-directive'],
+  //     prism: {
+  //       theme: 'prism-themes/themes/prism-vsc-dark-plus.css',
+  //     },
+  //   },
+  // },
   robots: {
     Sitemap: `${process.env.BASE_URL}/sitemap.xml`,
   },

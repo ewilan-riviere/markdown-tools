@@ -53,20 +53,20 @@
 
     <transition name="fade">
       <div v-if="display" class="mt-12">
-        <div
-          class="p-5 mx-auto prose prose-lg text-gray-100 bg-gray-700 rounded-md"
-        >
-          <div class="mb-5 text-3xl border-b-2 font-handlee w-max">
-            Preview based on pre-styled markdown CSS
-          </div>
-          <div ref="output" class="nuxt-content">
-            <div
-              v-html="
-                originalType === 'HTML'
-                  ? $md.render(convertedCode)
-                  : convertedCode
-              "
-            ></div>
+        <div class="p-5 mx-auto text-gray-100 bg-gray-700 rounded-md">
+          <div class="prose prose-lg">
+            <div class="mb-5 text-3xl text-white border-b-2 font-handlee">
+              Preview based on pre-styled markdown CSS
+            </div>
+            <div ref="output" class="nuxt-content">
+              <div
+                v-html="
+                  originalType === 'HTML'
+                    ? $md.render(convertedCode)
+                    : convertedCode
+                "
+              ></div>
+            </div>
           </div>
         </div>
       </div>

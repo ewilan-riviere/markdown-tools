@@ -1,24 +1,27 @@
 <template>
   <div class="container max-w-7xl">
-    <layout
+    <lazy-layout
       original-type="Markdown"
       converted-type="HTML"
       :to-convert="markdown"
       :converted="htmlConversion"
       @convert="convert"
-    ></layout>
+    ></lazy-layout>
   </div>
 </template>
 
 <script>
-import layout from '~/components/blocks/layout.vue'
+// https://github.com/beautify-web/js-beautify
+import Beautify from 'js-beautify'
+
 export default {
   name: 'PageHtmlToMarkdown',
-  components: { layout },
   data() {
     return {
       display: false,
-      markdown: '# Hello world!',
+      markdown: `# Hello world!
+      
+You can convert Markdown code from this area!`,
       htmlConversion: null,
     }
   },
@@ -26,7 +29,7 @@ export default {
     markdown(newValue) {
       let render = this.$md.render(newValue)
       render = `<div>${render}</div>`
-      render = this.$beautify(render)
+      render = Beautify.html(render)
       this.htmlConversion = render
     },
   },
@@ -37,7 +40,7 @@ export default {
     convert(newValue) {
       let render = this.$md.render(newValue)
       render = `<div>${render}</div>`
-      render = this.$beautify(render)
+      render = Beautify.html(render)
       this.htmlConversion = render
     },
   },

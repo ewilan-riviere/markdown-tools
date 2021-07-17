@@ -1,9 +1,9 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-  mode: 'jit',
   darkMode: 'class',
   purge: [
     'assets/**/*.css',
-    'assets/**/*.pcss',
     'components/**/*.vue',
     'layouts/**/*.vue',
     'pages/**/*.vue',
@@ -14,58 +14,34 @@ module.exports = {
     container: {
       center: true,
     },
+    screens: {
+      sm: '360px',
+      md: '600px',
+      lg: '900px',
+      xl: '1300px',
+      '2xl': '1536px',
+      '3xl': '1920px',
+    },
     extend: {
       colors: {
         primary: {
-          100: '#ccf3e8',
-          200: '#99e8d2',
-          300: '#66dcbb',
-          400: '#33d1a5',
-          500: '#00c58e',
-          600: '#009e72',
-          700: '#007655',
-          800: '#004f39',
-          900: '#00271c',
+          100: '#e2e0ff',
+          200: '#c4c1ff',
+          300: '#a7a1ff',
+          400: '#8982ff',
+          500: '#6c63ff',
+          600: '#564fcc',
+          700: '#413b99',
+          800: '#2b2866',
+          900: '#161433',
         },
       },
       fontFamily: {
         handlee: ['Handlee'],
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            h1: {
-              fontSize: '2rem',
-            },
-          },
-        },
-        light: {
-          css: {
-            color: '#e5e7eb',
-            h1: {
-              color: '#f3f4f6',
-            },
-            h2: {
-              color: '#f3f4f6',
-            },
-            h3: {
-              color: '#f3f4f6',
-            },
-            strong: {
-              color: '#e5e7eb',
-            },
-            blockquote: {
-              color: '#e5e7eb',
-            },
-            a: {
-              color: '#3182ce',
-              '&:hover': {
-                color: '#2c5282',
-              },
-            },
-          },
-        },
-      }),
+      maxWidth: {
+        extra: '120rem',
+      },
     },
   },
   variants: {

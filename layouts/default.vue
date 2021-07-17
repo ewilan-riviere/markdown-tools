@@ -1,8 +1,8 @@
 <template>
   <div :class="dev ? 'debug-screens' : ''" class="bg-gray-900">
     <lazy-navbar />
-    <Nuxt class="pt-16 content" />
-    <lazy-app-footer class="footer" />
+    <Nuxt class="pt-16 min-h-screen" />
+    <lazy-app-footer />
   </div>
 </template>
 
@@ -15,12 +15,3 @@ export default {
   },
 }
 </script>
-
-<style lang="postcss" scoped>
-.content {
-  min-height: calc(100vh - 50px);
-}
-.footer {
-  height: 50px;
-}
-</style>

@@ -1,22 +1,3 @@
-.dark {
-  & .nuxt-content {
-    @apply text-white;
-  }
-  & h1,
-  & h2,
-  & h3 {
-    @apply text-white;
-  }
-  & code,
-  & pre,
-  & strong {
-    @apply text-white;
-  }
-  & a {
-    @apply text-gray-100;
-  }
-}
-
 .nuxt-content a:hover {
   @apply bg-opacity-25 !important;
 }

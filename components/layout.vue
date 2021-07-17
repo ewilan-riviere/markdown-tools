@@ -10,7 +10,20 @@
           </span>
           <textarea
             v-model="originalCode"
-            class="block w-full mt-1 text-gray-100 bg-gray-800 border-gray-700 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            class="
+              block
+              w-full
+              mt-1
+              text-gray-100
+              bg-gray-800
+              border-gray-700
+              rounded-md
+              shadow-sm
+              focus:border-indigo-300
+              focus:ring
+              focus:ring-indigo-200
+              focus:ring-opacity-50
+            "
             spellcheck="false"
             rows="15"
           ></textarea>
@@ -22,7 +35,15 @@
           >Your render into {{ convertedType }}</span
         >
         <div
-          class="p-3 overflow-scroll text-gray-100 bg-gray-800 rounded-md shadow h-96"
+          class="
+            p-3
+            overflow-scroll
+            text-gray-100
+            bg-gray-800
+            rounded-md
+            shadow
+            h-96
+          "
         >
           <pre>{{ convertedCode }}</pre>
         </div>
@@ -37,13 +58,33 @@
     <div class="flex mt-5">
       <div class="ml-auto">
         <button
-          class="px-4 py-2 font-semibold text-white transition-colors duration-100 bg-indigo-600 rounded-md hover:bg-indigo-700"
+          class="
+            px-4
+            py-2
+            font-semibold
+            text-white
+            transition-colors
+            duration-100
+            bg-indigo-600
+            rounded-md
+            hover:bg-indigo-700
+          "
           @click="display = !display"
         >
           Toggle preview
         </button>
         <button
-          class="px-4 py-2 font-semibold text-white transition-colors duration-100 bg-indigo-600 rounded-md hover:bg-indigo-700"
+          class="
+            px-4
+            py-2
+            font-semibold
+            text-white
+            transition-colors
+            duration-100
+            bg-indigo-600
+            rounded-md
+            hover:bg-indigo-700
+          "
           @click="copyCode(convertedCode)"
         >
           Copy {{ convertedType }} code

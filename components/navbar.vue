@@ -7,7 +7,19 @@
             <!-- Mobile menu button -->
             <button
               type="button"
-              class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              class="
+                inline-flex
+                items-center
+                justify-center
+                p-2
+                text-gray-400
+                rounded-md
+                hover:text-gray-500 hover:bg-gray-100
+                focus:outline-none
+                focus:ring-2
+                focus:ring-inset
+                focus:ring-indigo-500
+              "
               aria-controls="mobile-menu"
               aria-expanded="false"
               @click="responsiveMenuOpened = !responsiveMenuOpened"
@@ -50,7 +62,13 @@
             </button>
           </div>
           <div
-            class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start"
+            class="
+              flex
+              items-center
+              justify-center
+              flex-1
+              sm:items-stretch sm:justify-start
+            "
           >
             <nuxt-link
               to="/"
@@ -59,12 +77,12 @@
             >
               <img
                 class="block w-auto h-8 lg:hidden"
-                src="/icons/md-logo-dark.svg"
+                src="/icons/md-logo.svg"
                 alt="Markdown Interpreter"
               />
               <img
                 class="hidden w-auto h-8 text-white fill-current lg:block"
-                src="/icons/md-logo-dark.svg"
+                src="/icons/md-logo.svg"
                 alt="Markdown Interpreter"
               />
             </nuxt-link>
@@ -74,7 +92,19 @@
                 v-for="route in routes"
                 :key="route.id"
                 :to="{ name: route.name }"
-                class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 transition-colors duration-100 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-100"
+                class="
+                  inline-flex
+                  items-center
+                  px-1
+                  pt-1
+                  text-sm
+                  font-medium
+                  text-gray-300
+                  transition-colors
+                  duration-100
+                  border-b-2 border-transparent
+                  hover:border-gray-300 hover:text-gray-100
+                "
               >
                 {{ route.label }}
               </nuxt-link>
@@ -94,7 +124,22 @@
             v-for="route in routes"
             :key="route.id"
             :to="{ name: route.name }"
-            class="block py-2 pl-3 pr-4 text-base font-medium text-gray-300 transition-colors duration-100 border-l-4 border-transparent hover:bg-gray-50 hover:border-gray-300 hover:text-gray-100 hover:bg-opacity-25"
+            class="
+              block
+              py-2
+              pl-3
+              pr-4
+              text-base
+              font-medium
+              text-gray-300
+              transition-colors
+              duration-100
+              border-l-4 border-transparent
+              hover:bg-gray-50
+              hover:border-gray-300
+              hover:text-gray-100
+              hover:bg-opacity-25
+            "
             @click.native="responsiveMenuOpened = !responsiveMenuOpened"
           >
             {{ route.label }}

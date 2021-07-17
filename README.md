@@ -12,13 +12,15 @@ This project allow user to paste markdown code into textarea and convert it to H
 
 ## 🔧 Project setup
 
+Download dependencies, you can use npm install too
+
 ```bash
-# Download dependencies, you can use npm install too
 yarn
 ```
 
+Compiles and hot-reloads for development
+
 ```bash
-# Compiles and hot-reloads for development
 yarn dev
 ```
 

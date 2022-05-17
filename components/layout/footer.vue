@@ -8,7 +8,7 @@
           href="https://github.com/ewilan-riviere/markdown-interpreter"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-400 hover:text-gray-500"
+          class="internal-link text-gray-400"
         >
           <span class="sr-only">GitHub</span>
           <svg-icon name="github" class="w-6 h-6" />
@@ -17,7 +17,14 @@
       <div class="mt-8 md:mt-0 md:order-1">
         <p class="text-center text-base text-gray-400 flex items-center">
           <svg-icon name="cc" class="w-6 h-6 mr-1" /> 2020 -
-          {{ new Date().getFullYear() }} Ewilan Rivière. MIT License.
+          {{ new Date().getFullYear() }}<span class="mx-1">·</span
+          ><a
+            href="https://github.com/ewilan-riviere"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="internal-link"
+            >Ewilan Rivière</a
+          >. MIT License.
         </p>
       </div>
     </div>

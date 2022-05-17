@@ -42,6 +42,10 @@ module.exports = {
         '.main-container': {
           '@apply mx-auto max-w-7xl px-6 lg:px-8': {},
         },
+        '.internal-link': {
+          '@apply text-gray-100 transition-colors duration-100 border-b border-gray-100 hover:border-gray-400 hover:text-gray-400 !important':
+            {},
+        },
       })
     }),
     require('@tailwindcss/forms'),

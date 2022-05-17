@@ -49,11 +49,11 @@ const copy = async () => {
   <div>
     <label
       :for="name"
-      class="block text-xl font-medium text-gray-200 font-handlee"
+      class="block text-lg font-medium text-gray-200 font-handlee"
     >
       {{ label }}
     </label>
-    <div class="mt-1">
+    <div class="mt-2">
       <textarea
         :name="name"
         :id="name"

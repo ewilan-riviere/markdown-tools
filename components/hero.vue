@@ -50,19 +50,18 @@
           <h1
             class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl"
           >
-            <span class="text-white font-mono">Markdown Interpreter</span
-            ><span class="text-indigo-200 font-handlee"
-              >, to convert html to markdown and reverse</span
-            >
+            <span class="text-white font-mono mr-2">Markdown</span
+            ><span class="text-indigo-200 font-handlee">Interpreter</span>
           </h1>
           <p
             class="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl"
           >
-            A tool to manage Markdown code or HTML code with
+            A tool to to convert HTML to Markdown and reverse with
             <a
               href="https://github.com/showdownjs/showdown"
               target="_blank"
               rel="noopener noreferrer"
+              class="internal-link"
               >Showdown</a
             >.
           </p>

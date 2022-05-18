@@ -46,7 +46,7 @@ const clear = () => {
       <div class="flex items-start">
         <div class="shrink-0">
           <svg-icon
-            :name="toast.type ? `toast/${toast.type}` : 'toast/information'"
+            :name="toast.type ? `toast-${toast.type}` : 'toast-information'"
             :class="color"
             class="h-6 w-6"
           />

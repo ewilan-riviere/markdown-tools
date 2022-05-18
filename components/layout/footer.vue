@@ -24,7 +24,14 @@
             rel="noopener noreferrer"
             class="internal-link"
             >Ewilan Rivière</a
-          >. MIT License.
+          ><span class="mr-1">.</span
+          ><a
+            href="https://gitlab.com/ewilan-riviere/markdown-interpreter/-/blob/main/LICENSE"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="internal-link"
+            >MIT License</a
+          >.
         </p>
       </div>
     </div>

@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const isDev = useNuxtApp()._legacyContext.isDev
+const isDev = useNuxtApp()._legacyContext?.isDev
+
+useMetadata({
+  title: 'Markdown Interpreter',
+})
 </script>
 
 <template>
   <div :class="{ 'debug-screens': isDev }" class="relative overflow-hidden">
-    <app-toasts />
+    <app-toast />
     <main>
       <hero />
       <converter type="html" />

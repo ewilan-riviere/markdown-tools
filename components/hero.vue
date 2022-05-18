@@ -1,40 +1,4 @@
 <template>
-  <!-- <div class="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
-    <div class="">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-8">
-        <div
-          class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center"
-        >
-          <div class="lg:py-24">
-            <h1
-              class="mt-4 text-4xl tracking-tight font-semibold sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"
-            >
-              <span class="font-sans">Markdown Interpreter</span
-              ><span class="text-indigo-400 font-handlee"
-                >, to convert html to markdown and reverse</span
-              >
-            </h1>
-            <p
-              class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl"
-            >
-              A tool to manage Markdown code or HTML code.
-            </p>
-          </div>
-        </div>
-        <div class="h-64 lg:h-full mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
-          <div
-            class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0"
-          >
-            <img
-              class="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-              src="/images/hero-picture.svg"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="relative mt-6 mb-10">
     <div class="main-container">
       <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">

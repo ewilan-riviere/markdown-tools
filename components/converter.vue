@@ -50,12 +50,21 @@ onMounted(() => {
           readonly
         />
       </div>
-      <button class="mt-6" @click="preview = !preview">Preview</button>
-      <div v-if="preview" class="border-t border-gray-700 mt-6 pt-6">
-        <div class="prose prose-invert">
-          <div v-html="type === 'html' ? originalText : convertText"></div>
+      <button
+        class="mt-6 flex items-center space-x-1 hover:bg-gray-800 transition-colors duration-75 rounded-md px-2 py-1"
+        @click="preview = !preview"
+      >
+        <svg-icon v-if="!preview" name="eye" class="w-5 h-5" />
+        <svg-icon v-else name="eye-off" class="w-5 h-5" />
+        <span>Preview</span>
+      </button>
+      <transition>
+        <div v-if="preview" class="border-t border-gray-700 mt-6 pt-6">
+          <div class="prose-sm prose-invert">
+            <div v-html="type === 'html' ? originalText : convertText"></div>
+          </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>

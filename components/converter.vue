@@ -21,7 +21,7 @@ onMounted(() => {
 
 <template>
   <div class="main-container">
-    <div class="border border-gray-600 rounded-md p-6">
+    <div class="border border-gray-600 rounded-md p-6 mx-2">
       <div class="pb-5">
         <h2 class="text-2xl leading-6 font-medium text-gray-100 font-handlee">
           {{ type === 'html' ? 'HTML to Markdown' : 'Markdown to HTML' }}

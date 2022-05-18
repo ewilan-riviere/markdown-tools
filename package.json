@@ -3,7 +3,8 @@
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "preview": "nuxi preview"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^5.0.4",

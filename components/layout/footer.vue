@@ -8,7 +8,7 @@
           href="https://github.com/ewilan-riviere/markdown-interpreter"
           target="_blank"
           rel="noopener noreferrer"
-          class="internal-link text-gray-400"
+          class="text-gray-400 hover:text-gray-500"
         >
           <span class="sr-only">GitHub</span>
           <svg-icon name="github" class="w-6 h-6" />

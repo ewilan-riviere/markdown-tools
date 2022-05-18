@@ -14,6 +14,17 @@ module.exports = {
         padding: '1.25rem',
         center: true,
       },
+      primary: {
+        100: '#e2e0ff',
+        200: '#c4c1ff',
+        300: '#a7a1ff',
+        400: '#8982ff',
+        500: '#6c63ff',
+        600: '#564fcc',
+        700: '#413b99',
+        800: '#2b2866',
+        900: '#161433',
+      },
       screens: {
         sm: '360px',
         md: '600px',
@@ -25,15 +36,6 @@ module.exports = {
       fontFamily: {
         handlee: ['Handlee'],
       },
-      keyframes: {
-        life: {
-          '0%': { width: '100%' },
-          '100%': { width: '0%' },
-        },
-      },
-      animation: {
-        life: 'life 3750ms linear forwards',
-      },
     },
   },
   plugins: [
@@ -43,7 +45,7 @@ module.exports = {
           '@apply mx-auto max-w-7xl px-6 lg:px-8': {},
         },
         '.internal-link': {
-          '@apply text-gray-100 transition-colors duration-100 underline underline-offset-2 hover:text-gray-400 !important':
+          '@apply transition-colors duration-100 hover:text-gray-300 underline underline-offset-2 !important':
             {},
         },
       })

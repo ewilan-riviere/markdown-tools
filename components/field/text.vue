@@ -36,13 +36,6 @@ const value = computed<string>({
     emit('update:modelValue', val)
   },
 })
-
-const { pushToast } = useToast()
-
-const copy = async () => {
-  await navigator.clipboard.writeText(value.value)
-  pushToast('copied')
-}
 </script>
 
 <template>
@@ -53,7 +46,7 @@ const copy = async () => {
     >
       {{ label }}
     </label>
-    <div class="mt-2">
+    <div class="mt-2 relative">
       <textarea
         :name="name"
         :id="name"
@@ -65,11 +58,11 @@ const copy = async () => {
         spellcheck="false"
         rows="15"
       ></textarea>
+      <app-copy-btn :text="value" class="absolute z-40 bottom-3 right-3" />
     </div>
     <div class="mt-2 text-sm text-gray" id="email-description">
       <slot />
     </div>
-    <button @click="copy">copy</button>
   </div>
 </template>
 

@@ -27,6 +27,14 @@
               rel="noopener noreferrer"
               class="internal-link"
               >Showdown</a
+            >
+            &
+            <a
+              href="https://github.com/mixmark-io/turndown"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="internal-link"
+              >Turndown</a
             >.
           </p>
         </div>

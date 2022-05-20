@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "build": "nuxi build",
+    "generate": "nuxi generate",
     "dev": "nuxi dev",
     "start": "node .output/server/index.mjs",
     "preview": "nuxi preview"

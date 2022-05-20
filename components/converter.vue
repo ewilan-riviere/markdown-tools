@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ConverterType } from '~~/types'
 
-const { markdownText, htmlText, change } = useConvert()
+const { markdownText, htmlText, convert } = useConvert()
 
 const preview = ref(false)
 </script>
@@ -10,19 +10,19 @@ const preview = ref(false)
   <div class="main-container">
     <div class="border border-gray-600 rounded-md p-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <field-text
+        <field-input-text
           v-model="htmlText"
           name="original"
           label="HTML code"
           placeholder="HTML"
-          @input="change('html')"
+          @input="convert('html')"
         />
-        <field-text
+        <field-input-text
           v-model="markdownText"
           name="convert"
           label="Markdown code"
           placeholder="Markdown"
-          @input="change('markdown')"
+          @input="convert('markdown')"
         />
       </div>
       <button

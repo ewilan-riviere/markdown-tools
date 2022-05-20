@@ -5,6 +5,7 @@ const build = {
       'postcss-nested': false,
     },
   },
+  transpile: ['turndown'],
 }
 
 export default build

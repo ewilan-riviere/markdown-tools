@@ -1,34 +1,43 @@
 import showdown from 'showdown'
+import { ConverterType } from '~~/types'
+import Beautify from 'js-beautify'
+import Turndown from 'turndown'
 
-export const useConvert = (type: 'html' | 'markdown') => {
-  let originalHtml = `<h1>Hello world!</h1>
+export const useConvert = () => {
+  let originalHtml = `<div><h1>Hello world!</h1><p>You can convert HTML code to Markdown from this area!</p><pre><code>let a = 1</code></pre></div>`
+  let originalMd = `# Hello world!
+You can convert HTML code to Markdown from this area!`
 
-<p>You can convert HTML code to Markdown from this area!</p>`
-  const originalMarkdown = `# Hello world!
+  const htmlText = ref<string>()
+  const markdownText = ref<string>()
+  const turndownOptions = ref<Turndown.Options>({
+    headingStyle: 'atx',
+    hr: '---',
+    codeBlockStyle: 'fenced',
+  })
 
-You can convert Markdown code from this area!`
+  const converter = new showdown.Converter()
+  const td = new Turndown(turndownOptions.value)
 
-  const originalText = ref()
-  const convertText = ref()
+  htmlText.value = Beautify.html(originalHtml)
 
-  if (type === 'html') {
-    originalText.value = originalHtml
-  } else {
-    originalText.value = originalMarkdown
-  }
-
-  const convert = () => {
-    let converter = new showdown.Converter()
+  const convert = (type: ConverterType) => {
     if (type === 'html') {
-      convertText.value = converter.makeMarkdown(originalText.value)
+      let converted = td.turndown(htmlText.value!)
+      markdownText.value = Beautify.html(converted)
     } else {
-      convertText.value = converter.makeHtml(originalText.value)
+      let converted = converter.makeHtml(markdownText.value!)
+      htmlText.value = Beautify.html(converted)
     }
   }
 
+  onMounted(() => {
+    convert('html')
+  })
+
   return {
-    originalText,
-    convertText,
+    htmlText,
+    markdownText,
     convert,
   }
 }

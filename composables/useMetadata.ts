@@ -8,11 +8,7 @@ export const useMetadata = (meta?: HeadMeta) => {
   let appDescription =
     'A tool to to convert HTML to Markdown and reverse with Showdown'
 
-  let title = 'Markdown Interpreter'
-  // if (meta?.title) {
-  //   title = `${meta.title} · ${appName}`
-  //   title = title.replace('APP_NAME', appName)
-  // }
+  let title = appName
 
   let description = appDescription
   if (meta?.description) {

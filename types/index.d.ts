@@ -6,4 +6,6 @@ declare module '@nuxt/schema' {
   interface PrivateRuntimeConfig {}
 }
 
+export type ConverterType = 'html' | 'markdown'
+
 export {}

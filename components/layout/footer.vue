@@ -1,6 +1,6 @@
 <template>
   <footer class="main-container pt-12 pb-8">
-    <div class="md:flex md:items-center md:justify-between lg:px-8">
+    <div class="md:flex md:items-center md:justify-between">
       <div class="flex justify-center space-x-6 md:order-2">
         <a
           href="https://github.com/ewilan-riviere/markdown-interpreter"

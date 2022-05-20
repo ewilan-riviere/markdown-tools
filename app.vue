@@ -11,8 +11,7 @@ useMetadata({
     <app-toast />
     <main>
       <hero />
-      <converter type="html" />
-      <converter type="markdown" class="mt-10" />
+      <converter />
     </main>
     <layout-footer />
   </div>

@@ -69,5 +69,6 @@ const value = computed<string>({
 <style lang="css" scoped>
 textarea {
   @apply py-3 border-0 resize-none focus:ring-0 bg-gray-800 placeholder-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-700 rounded-md;
+  scrollbar-width: thin;
 }
 </style>

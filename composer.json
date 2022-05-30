@@ -10,11 +10,13 @@
     "require": {
         "php": "^8.0.2",
         "artesaos/seotools": "^0.22.0",
+        "fabpot/goutte": "^4.0",
         "fluentdom/fluentdom": "^8.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "league/html-to-markdown": "^5.1",
         "symfony/process": "^6.1"
     },
     "require-dev": {

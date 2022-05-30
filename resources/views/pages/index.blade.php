@@ -40,22 +40,19 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 container">
-        <section x-data="copy" class="max-w-prose">
-            <textarea x-ref="text" id="about" name="about" rows="30"
-                class="shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-700 rounded-md bg-gray-800 scrollbar-thin">{{ $service->markdown }}</textarea>
-            <p class="mt-2 text-sm text-gray-400">This is your article into Markdown.</p>
-            <button @click="copyText()">copy</button>
-            <div x-show="copied" x-transition>text copied!</div>
-        </section>
+    @isset($service)
+        <section class="grid grid-cols-2 gap-4 container">
+            <div x-data="copy" class="max-w-prose">
+                <textarea x-ref="text" id="about" name="about" rows="30"
+                    class="shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-700 rounded-md bg-gray-800 scrollbar-thin">{{ $service->markdown }}</textarea>
+                <p class="mt-2 text-sm text-gray-400">This is your article into Markdown.</p>
+                <button @click="copyText()">copy</button>
+                <div x-show="copied" x-transition>text copied!</div>
+            </div>
 
-        <section
-            class="prose prose-invert max-h-[39rem] overflow-auto bg-gray-800 rounded-md border border-gray-700 p-5">
-            <div>
-                @isset($service)
-                    {!! $service->html !!}
-                @endisset
+            <div class="prose prose-invert max-h-[39rem] overflow-auto bg-gray-800 rounded-md border border-gray-700 p-5">
+                {!! $service->html !!}
             </div>
         </section>
-    </div>
+    @endisset
 </x-layout.views>

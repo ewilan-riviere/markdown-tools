@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\DomService;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
@@ -11,12 +12,23 @@ class MainController extends Controller
     {
         SEOMeta::setTitle('Welcome');
 
+        return view('views.pages.index');
+    }
+
+    public function url(Request $request, ?string $article_url = null)
+    {
+        // $request->article_url = $request->url;
+
+        if (! $request->article_url) {
+            return redirect(route('url', ['article_url' => base64_encode($request->url)]));
+        }
+
         $url_article_lesnumeriques = 'https://www.lesnumeriques.com/vie-du-net/proton-enfin-une-alternative-viable-a-l-environnement-google-n184033.html';
         $url_article_franceinfo = 'https://la1ere.francetvinfo.fr/guadeloupe/journee-mondiale-de-lutte-contre-la-transphobie-et-l-homophobie-des-actes-anti-lgbt-en-hausse-1284644.html';
         // fluent dom
         // https:// gitlab.com/bookshelves-project/bookshelves-back/-/blob/9ad14c2ad619a186d48a7c5721ec4925c5b05d65/app/Services/ParserEngine/ParserEngine.php
 
-        $service = DomService::create($url_article_franceinfo);
+        $service = DomService::create($request->article_url);
         $service->parse()
             ->convert()
         ;

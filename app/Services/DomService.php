@@ -2,18 +2,18 @@
 
 namespace App\Services;
 
-use Http;
-use Illuminate\Http\Client\Response;
+use Cache;
+use DOMDocument;
+use Goutte\Client;
 use League\HTMLToMarkdown\HtmlConverter;
-use Session;
-use Str;
+use Symfony\Component\DomCrawler\Crawler;
 
 class DomService
 {
-    public Response $response;
+    public Crawler $crawler;
     public string $body;
-    public string $article_markdown;
-    public string $article_html;
+    public string $markdown;
+    public string $html;
 
     public function __construct(
         public string $url
@@ -22,25 +22,96 @@ class DomService
 
     public static function create(string $url): DomService
     {
-        $service = new DomService($url);
-
-        if (Session::exists('post')) {
-            $service->body = Session::get('post')[0];
-        } else {
-            $service->response = Http::get($url);
-            $service->body = $service->response->body();
-            Session::push('post', $service->body);
-        }
-
-        return $service;
+        return new DomService($url);
     }
 
-    public function convert(string $textContent): DomService
+    public function parse(): DomService
+    {
+        $html = $this->cache();
+
+        $html = preg_replace_callback('/<img[^>]+\\>/i', function (array $matches) {
+            $img = $matches[0];
+            $doc = new DOMDocument();
+            @$doc->loadHTML($img);
+            $tags = $doc->getElementsByTagName('img');
+            /** @var \DomElement $img_tag */
+            $img_tag = $tags->item(0);
+            if ($img_tag) {
+                $src = $img_tag->getAttribute('src');
+                return "<img src='{$src}' />";
+            }
+        }, $html);
+        $html = preg_replace('/<audio[^>]+\\>/i', '', $html); // remove audio
+        $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
+        $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt
+
+        $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
+        $html = preg_replace($regex, '', $html);
+        // preg_match_all($regex, $html, $matches);
+
+        $regex = '/<aside([^>]+)>(.|\n)*?<\/aside>/i';
+        $html = preg_replace($regex, '', $html);
+
+        $regex = '/<[^>]*class="[^"]*\brelated\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*?>/i';
+        $html = preg_replace($regex, '', $html);
+
+        $html = preg_replace('/class=".*?"/', '', $html);
+        $html = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $html);
+
+        $this->html = $html;
+
+        return $this;
+    }
+
+    public function fetch()
+    {
+        $client = new Client();
+        $this->crawler = $client->request('GET', $this->url);
+
+        $node_main_key = 'main';
+        $node_main_key_count = 0;
+        $node_keys_testing = [
+            'main',
+            'article',
+        ];
+        $node_keys_testing_parsing = [];
+        foreach ($node_keys_testing as $node_key) {
+            $count = $this->crawler->filter($node_key)->count();
+            $node_keys_testing_parsing[$node_key] = $count;
+            if ($count > $node_main_key_count) {
+                $node_main_key = $node_key;
+                $node_main_key_count = $count;
+            }
+        }
+
+        $out = [];
+        $this->crawler->filter($node_main_key)->each(function (Crawler $node) use (&$out) {
+            array_push($out, "<p>{$node->html()}</p>");
+        });
+        $html = implode('', $out);
+
+        Cache::add('post', $html);
+    }
+
+    public function cache(bool $clear = false)
+    {
+        if ($clear) {
+            Cache::flush('post');
+        }
+
+        if (! Cache::has('post')) {
+            $this->fetch();
+        }
+
+        return Cache::get('post');
+    }
+
+    public function convert(): DomService
     {
         $converter = new HtmlConverter();
 
-        $this->article_markdown = $converter->convert($textContent);
-        $this->article_html = Str::markdown($this->article_markdown);
+        $converter->setOptions(['header_style' => 'atx']);
+        $this->markdown = strip_tags($converter->convert($this->html));
 
         return $this;
     }

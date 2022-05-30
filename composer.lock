@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "109d8b6213044a9574096543957097e0",
+    "content-hash": "b88f1f181511fa2b6db11a50fadcc38b",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -562,71 +562,6 @@
                 "source": "https://github.com/FriendsOfPHP/Goutte/tree/v4.0.2"
             },
             "time": "2021-12-17T17:15:01+00:00"
-        },
-        {
-            "name": "fluentdom/fluentdom",
-            "version": "8.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ThomasWeinert/FluentDOM.git",
-                "reference": "22ee56352bb5fd0bc41ccf7906780aabc2bccf33"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ThomasWeinert/FluentDOM/zipball/22ee56352bb5fd0bc41ccf7906780aabc2bccf33",
-                "reference": "22ee56352bb5fd0bc41ccf7906780aabc2bccf33",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "php": "~7.2 || ~8.0"
-            },
-            "require-dev": {
-                "ext-simplexml": "*",
-                "ext-xmlreader": "*",
-                "ext-xmlwriter": "*"
-            },
-            "suggest": {
-                "ext-json": "JSON support, needed for several loaders/serializers",
-                "ext-xmlreader": "XMLReader, XML pull parser, read large XMLs",
-                "ext-xmlwriter": "XMLWriter, Write large XMLs",
-                "fluentdom/css-selector": "Allows to use css selectors."
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/FluentDOM.php"
-                ],
-                "psr-4": {
-                    "FluentDOM\\": "src/FluentDOM"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "FluentDOM Contributors",
-                    "homepage": "https://github.com/FluentDOM/FluentDOM/contributors"
-                }
-            ],
-            "description": "A fluent api for the php dom extension.",
-            "homepage": "http://fluentdom.org",
-            "keywords": [
-                "XMLReader",
-                "XMLWriter",
-                "Xpath",
-                "dom",
-                "jquery",
-                "xml"
-            ],
-            "support": {
-                "issues": "https://github.com/ThomasWeinert/FluentDOM/issues",
-                "source": "https://github.com/ThomasWeinert/FluentDOM/tree/8.0.0"
-            },
-            "time": "2021-04-18T18:12:11+00:00"
         },
         {
             "name": "fruitcake/php-cors",

@@ -1,4 +1,4 @@
-<x-layout.views class="max-w-7xl mx-auto">
+<x-layout.views class="max-w-7xl mx-auto main-content">
     <div class="py-16 sm:py-24">
         <div class="relative sm:py-16">
             <div aria-hidden="true" class="hidden sm:block">
@@ -64,7 +64,7 @@
         @endisset
     </div>
 
-    <x-form.url />
+    {{-- <x-form.url />
     <div>Welcome</div>
     <div x-data>
         <div x-text="$store.shop.name">shop-name</div>
@@ -76,5 +76,5 @@
                 </template>
             </ul>
         </div>
-    </div>
+    </div> --}}
 </x-layout.views>

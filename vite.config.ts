@@ -1,6 +1,5 @@
 import { PluginOption, UserConfigExport } from 'vite'
 import Dotenv from 'dotenv'
-import windicss from 'vite-plugin-windicss'
 
 Dotenv.config()
 
@@ -41,12 +40,3 @@ export const bladePlugin = (): PluginOption => ({
     }
   },
 })
-
-export const windicssPlugin = () =>
-  windicss({
-    config: '../../windi.config.ts',
-    scan: {
-      dirs: ['.', '../views', '../components'],
-      fileExtensions: ['blade.php', 'vue', 'ts'],
-    },
-  })

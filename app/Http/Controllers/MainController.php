@@ -35,25 +35,20 @@ class MainController extends Controller
         // }
         // $service->convert($article_node->textContent);
 
-        $client = new Client();
-        $crawler = $client->request('GET', $url_article);
-        $out = [];
-
-        // $crawler->getNode(1);
-        // $crawler->filter('section > article')->each(function (\Symfony\Component\DomCrawler\Crawler $node) use (&$out) {
-        //     // $url = $node->attr('href');
-        //     // $name = trim($node->filter('.article__title')->text());
-        //     dump($node->getNode(0));
-        //     array_push($out, $node);
-        // });
-        $crawler->filter('div > div > p')->each(function (\Symfony\Component\DomCrawler\Crawler $node) use (&$out) {
-            array_push($out, $node->html());
-        });
-        // dd($out);
-
         $article_html = null;
-        foreach ($out as $html) {
-            $article_html .= "<p>{$html}</p>";
+        $parse = false;
+        if ($parse) {
+            $client = new Client();
+            $crawler = $client->request('GET', $url_article);
+            $out = [];
+
+            $crawler->filter('div > div > p')->each(function (\Symfony\Component\DomCrawler\Crawler $node) use (&$out) {
+                array_push($out, $node->html());
+            });
+
+            foreach ($out as $html) {
+                $article_html .= "<p>{$html}</p>";
+            }
         }
 
         // $client = new Client();

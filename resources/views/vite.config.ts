@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { baseConfig, bladePlugin, windicssPlugin } from '../../vite.config'
+import { baseConfig, bladePlugin } from '../../vite.config'
 import path from 'path'
 
 // https://vitejs.dev/config/
@@ -10,7 +10,7 @@ export default defineConfig({
       '~/views': `${__dirname}`,
     },
   },
-  plugins: [bladePlugin(), windicssPlugin()],
+  plugins: [bladePlugin()],
   optimizeDeps: {
     include: ['alpinejs'],
   },

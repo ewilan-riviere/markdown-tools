@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Cache;
 use DOMDocument;
 use Goutte\Client;
 use League\HTMLToMarkdown\HtmlConverter;
@@ -26,43 +25,43 @@ class DomService
 
     public function parse(): DomService
     {
-        $html = $this->cache(true);
+        $html = $this->fetch();
 
-        $html = preg_replace_callback('/<img[^>]+\\>/i', function (array $matches) {
-            $img = $matches[0];
-            $doc = new DOMDocument();
-            @$doc->loadHTML($img);
-            $tags = $doc->getElementsByTagName('img');
-            /** @var \DomElement $img_tag */
-            $img_tag = $tags->item(0);
-            if ($img_tag) {
-                $src = $img_tag->getAttribute('src');
-                return "<img src='{$src}' />";
-            }
-        }, $html);
-        $html = preg_replace('/<audio[^>]+\\>/i', '', $html); // remove audio
-        $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
-        $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt
+        // $html = preg_replace_callback('/<img[^>]+\\>/i', function (array $matches) {
+        //     $img = $matches[0];
+        //     $doc = new DOMDocument();
+        //     @$doc->loadHTML($img);
+        //     $tags = $doc->getElementsByTagName('img');
+        //     /** @var \DomElement $img_tag */
+        //     $img_tag = $tags->item(0);
+        //     if ($img_tag) {
+        //         $src = $img_tag->getAttribute('src');
+        //         return "<img src='{$src}' />";
+        //     }
+        // }, $html);
+        // $html = preg_replace('/<audio[^>]+\\>/i', '', $html); // remove audio
+        // $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
+        // $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt
 
-        $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
-        $html = preg_replace($regex, '', $html);
-        // preg_match_all($regex, $html, $matches);
+        // $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
+        // $html = preg_replace($regex, '', $html);
+        // // preg_match_all($regex, $html, $matches);
 
-        $regex = '/<aside([^>]+)>(.|\n)*?<\/aside>/i';
-        $html = preg_replace($regex, '', $html);
+        // $regex = '/<aside([^>]+)>(.|\n)*?<\/aside>/i';
+        // $html = preg_replace($regex, '', $html);
 
-        $regex = '/<[^>]*class="[^"]*\brelated\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*?>/i';
-        $html = preg_replace($regex, '', $html);
+        // $regex = '/<[^>]*class="[^"]*\brelated\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*?>/i';
+        // $html = preg_replace($regex, '', $html);
 
-        $html = preg_replace('/class=".*?"/', '', $html);
-        $html = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $html);
+        // $html = preg_replace('/class=".*?"/', '', $html);
+        // $html = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $html);
 
         $this->html = $html;
 
         return $this;
     }
 
-    public function fetch()
+    public function fetch(): string
     {
         $client = new Client();
         $this->crawler = $client->request('GET', $this->url);
@@ -87,22 +86,8 @@ class DomService
         $this->crawler->filter($node_main_key)->each(function (Crawler $node) use (&$out) {
             array_push($out, "<p>{$node->html()}</p>");
         });
-        $html = implode('', $out);
 
-        Cache::add('post', $html);
-    }
-
-    public function cache(bool $clear = false)
-    {
-        if ($clear) {
-            Cache::flush('post');
-        }
-
-        if (! Cache::has('post')) {
-            $this->fetch();
-        }
-
-        return Cache::get('post');
+        return implode('', $out);
     }
 
     public function convert(): DomService

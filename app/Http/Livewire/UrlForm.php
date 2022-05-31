@@ -11,7 +11,7 @@ class UrlForm extends Component
 {
     use WithPagination;
 
-    public ?string $url = 'https://la1ere.francetvinfo.fr/guadeloupe/journee-mondiale-de-lutte-contre-la-transphobie-et-l-homophobie-des-actes-anti-lgbt-en-hausse-1284644.html';
+    public ?string $url = null;
     public ?string $ip = null;
     public ?Scraper $scraper = null;
 

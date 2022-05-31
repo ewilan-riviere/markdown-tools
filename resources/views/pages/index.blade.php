@@ -1,10 +1,10 @@
-<x-layout.views class="max-w-7xl mx-auto main-content px-2">
+<x-layout.views>
     <x-hero />
 
     @isset($scraper)
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 container">
-            <x-text-render label="Markdown" :text="$scraper->markdown" />
-            <x-text-render label="HTML" :text="$scraper->html" is-html />
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 container border border-gray-700 rounded-md py-8 px-6">
+            <x-text-render label="HTML code" :text="$scraper->html" is-html />
+            <x-text-render label="Markdown code" :text="$scraper->markdown" />
         </section>
     @endisset
 </x-layout.views>

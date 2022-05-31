@@ -28,6 +28,7 @@ class UrlForm extends Component
         $service->parse()
             ->convert()
         ;
+        dump($service);
 
         $this->scraper = Scraper::create([
             'url' => $this->url,

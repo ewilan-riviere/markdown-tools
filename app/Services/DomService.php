@@ -53,8 +53,8 @@ class DomService
         $regex = '/<[^>]*class="[^"]*\brelated\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*?>/i';
         $html = preg_replace($regex, '', $html);
 
-        // $html = preg_replace('/class=".*?"/', '', $html);
-        // $html = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $html);
+        $html = preg_replace('/class=".*?"/', '', $html);
+        $html = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $html);
 
         $this->html = $html;
 

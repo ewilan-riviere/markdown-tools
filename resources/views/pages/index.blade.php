@@ -2,7 +2,6 @@
     <x-hero />
 
     @isset($scraper)
-        @dump($scraper)
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 container">
             <x-text-render label="Markdown" :text="$scraper->markdown" />
             <x-text-render label="HTML" :text="$scraper->html" is-html />

@@ -27,18 +27,18 @@ class DomService
     {
         $html = $this->fetch();
 
-        // $html = preg_replace_callback('/<img[^>]+\\>/i', function (array $matches) {
-        //     $img = $matches[0];
-        //     $doc = new DOMDocument();
-        //     @$doc->loadHTML($img);
-        //     $tags = $doc->getElementsByTagName('img');
-        //     /** @var \DomElement $img_tag */
-        //     $img_tag = $tags->item(0);
-        //     if ($img_tag) {
-        //         $src = $img_tag->getAttribute('src');
-        //         return "<img src='{$src}' />";
-        //     }
-        // }, $html);
+        $html = preg_replace_callback('/<img[^>]+\\>/i', function (array $matches) {
+            $img = $matches[0];
+            $doc = new DOMDocument();
+            @$doc->loadHTML($img);
+            $tags = $doc->getElementsByTagName('img');
+            /** @var \DomElement $img_tag */
+            $img_tag = $tags->item(0);
+            if ($img_tag) {
+                $src = $img_tag->getAttribute('src');
+                return "<img src='{$src}' />";
+            }
+        }, $html);
         // $html = preg_replace('/<audio[^>]+\\>/i', '', $html); // remove audio
         // $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
         // $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt

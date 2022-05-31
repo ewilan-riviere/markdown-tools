@@ -50,7 +50,7 @@ class DomService
         // $regex = '/<aside([^>]+)>(.|\n)*?<\/aside>/i';
         // $html = preg_replace($regex, '', $html);
 
-        // $regex = '/<[^>]*class="[^"]*\brelated\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*?>/i';
+        $regex = '/<[^>]*class="[^"]*\brelated\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*?>/i';
         // $html = preg_replace($regex, '', $html);
 
         // $html = preg_replace('/class=".*?"/', '', $html);

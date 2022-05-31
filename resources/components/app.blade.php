@@ -17,10 +17,14 @@
     @isset($head)
         {!! $head !!}
     @endisset
+
+    @livewireStyles
 </head>
 
 <body class="bg-gray-900 text-white {{ config('app.env') === 'local' ? 'debug-screens' : '' }}">
     {{ $slot }}
+
+    @livewireScripts
 </body>
 
 </html>

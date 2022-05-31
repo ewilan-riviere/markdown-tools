@@ -15,5 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('welcome');
-Route::get('/url', [MainController::class, 'url'])->name('url');
-Route::post('/url', [MainController::class, 'url'])->name('url.post');
+Route::get('/{id}', [MainController::class, 'scraper'])->name('scraper');

@@ -1,5 +1,5 @@
 let refsAlpine: {
-  text: HTMLTextAreaElement
+  // text: HTMLElement
 }
 
 const copy = () => ({
@@ -9,14 +9,12 @@ const copy = () => ({
     // @ts-ignore
     refsAlpine = this.$refs
   },
-  async copyText() {
-    console.log(refsAlpine.text.textContent)
+  async copyText(text: string | null) {
+    console.log(text)
     this.copied = true
     let success = false
-    if (refsAlpine.text.textContent) {
-      await navigator.clipboard
-        .writeText(refsAlpine.text.textContent)
-        .then(() => (success = true))
+    if (text) {
+      await navigator.clipboard.writeText(text).then(() => (success = true))
     }
     // toast.push(success)
     setTimeout(() => {

@@ -11,7 +11,6 @@ use Symfony\Component\DomCrawler\Crawler;
 class DomService
 {
     public Crawler $crawler;
-    public string $body;
     public string $markdown;
     public string $html;
 
@@ -27,7 +26,7 @@ class DomService
 
     public function parse(): DomService
     {
-        $html = $this->cache();
+        $html = $this->cache(true);
 
         $html = preg_replace_callback('/<img[^>]+\\>/i', function (array $matches) {
             $img = $matches[0];

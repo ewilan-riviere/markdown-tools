@@ -15,7 +15,11 @@ module.exports = {
       '2xl': '1536px',
       '3xl': '1920px',
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        handlee: ['Handlee, cursive'],
+      },
+    },
   },
   plugins: [
     plugin(({ addComponents }) => {
@@ -29,6 +33,13 @@ module.exports = {
         },
         '.scrollbar-thin': {
           'scrollbar-width': 'thin',
+        },
+        '.main-container': {
+          '@apply mx-auto max-w-7xl px-6 lg:px-8': {},
+        },
+        '.internal-link': {
+          '@apply transition-colors duration-100 hover:text-gray-300 underline underline-offset-2 !important':
+            {},
         },
         '.debug-screens': {
           '@apply before:bottom-0 before:left-0 before:fixed before:px-1 before:text-sm before:bg-black before:text-white before:shadow-xl before:content-["screen:_"] sm:before:content-["screen:sm"] md:before:content-["screen:md"] lg:before:content-["screen:lg"] xl:before:content-["screen:xl"] 2xl:before:content-["screen:2xl"]':

@@ -12,6 +12,28 @@
 
 namespace App\Models{
 /**
+ * App\Models\Scraper
+ *
+ * @property int $id
+ * @property string|null $url
+ * @property string|null $ip
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\ScraperFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper whereIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Scraper whereUrl($value)
+ */
+	class Scraper extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id

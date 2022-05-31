@@ -1,17 +1,17 @@
 <?php
 
-namespace App\View\Components\Form;
+namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Url extends Component
+class CopyButton extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public ?string $copy = null
+    ) {
     }
 
     /**
@@ -21,6 +21,6 @@ class Url extends Component
      */
     public function render()
     {
-        return view('components.form.url');
+        return view('components.copy-button');
     }
 }

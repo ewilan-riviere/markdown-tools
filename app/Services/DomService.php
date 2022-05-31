@@ -12,6 +12,7 @@ class DomService
     public Crawler $crawler;
     public string $markdown;
     public string $html;
+    public bool $is_valid = false;
 
     public function __construct(
         public string $url
@@ -43,9 +44,9 @@ class DomService
         $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
         $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt
 
-        // $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
-        // $html = preg_replace($regex, '', $html);
-        // preg_match_all($regex, $html, $matches);
+        $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
+        $html = preg_replace($regex, '', $html);
+        preg_match_all($regex, $html, $matches);
 
         $regex = '/<aside([^>]+)>(.|\n)*?<\/aside>/i';
         $html = preg_replace($regex, '', $html);
@@ -57,6 +58,7 @@ class DomService
         $html = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $html);
 
         $this->html = $html;
+        $this->is_valid = $this->validate();
 
         return $this;
     }
@@ -84,7 +86,7 @@ class DomService
 
         $out = [];
         $this->crawler->filter($node_main_key)->each(function (Crawler $node) use (&$out) {
-            array_push($out, "<p>{$node->html()}</p>");
+            array_push($out, "<div>{$node->html()}</div>");
         });
 
         return implode('', $out);
@@ -98,5 +100,20 @@ class DomService
         $this->markdown = strip_tags($converter->convert($this->html));
 
         return $this;
+    }
+
+    private function validate(): bool
+    {
+        $is_valid = false;
+
+        libxml_use_internal_errors(true);
+        $dom = new DOMDocument();
+        $dom->loadHTML($this->html);
+
+        if (empty(libxml_get_errors())) {
+            $is_valid = true;
+        }
+
+        return $is_valid;
     }
 }

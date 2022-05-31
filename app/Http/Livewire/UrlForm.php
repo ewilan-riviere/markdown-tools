@@ -34,6 +34,7 @@ class UrlForm extends Component
             'ip' => $this->ip,
             'markdown' => $service->markdown,
             'html' => $service->html,
+            'is_valid' => $service->is_valid,
         ]);
         $scraper = $this->scraper;
 

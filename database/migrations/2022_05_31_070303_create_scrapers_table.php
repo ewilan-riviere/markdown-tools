@@ -16,6 +16,7 @@ return new class() extends Migration {
             $table->string('ip')->nullable();
             $table->text('markdown')->nullable();
             $table->text('html')->nullable();
+            $table->boolean('is_valid')->default(0);
             $table->timestamps();
         });
     }

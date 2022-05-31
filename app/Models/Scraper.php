@@ -14,5 +14,10 @@ class Scraper extends Model
         'ip',
         'markdown',
         'html',
+        'is_valid',
+    ];
+
+    protected $casts = [
+        'is_valid' => 'boolean',
     ];
 }

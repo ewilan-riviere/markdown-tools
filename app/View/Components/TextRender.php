@@ -11,8 +11,8 @@ class TextRender extends Component
      */
     public function __construct(
         public ?string $text = null,
-        public ?bool $isHtml = false,
         public ?string $label = null,
+        public ?string $optional = null
     ) {
     }
 

@@ -43,15 +43,15 @@ class DomService
         $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
         $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt
 
-        $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
-        $html = preg_replace($regex, '', $html);
+        // $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
+        // $html = preg_replace($regex, '', $html);
         // preg_match_all($regex, $html, $matches);
 
-        // $regex = '/<aside([^>]+)>(.|\n)*?<\/aside>/i';
-        // $html = preg_replace($regex, '', $html);
+        $regex = '/<aside([^>]+)>(.|\n)*?<\/aside>/i';
+        $html = preg_replace($regex, '', $html);
 
         $regex = '/<[^>]*class="[^"]*\brelated\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*?>/i';
-        // $html = preg_replace($regex, '', $html);
+        $html = preg_replace($regex, '', $html);
 
         // $html = preg_replace('/class=".*?"/', '', $html);
         // $html = preg_replace('/<p[^>]*><\\/p[^>]*>/', '', $html);

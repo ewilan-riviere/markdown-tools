@@ -39,9 +39,9 @@ class DomService
                 return "<img src='{$src}' />";
             }
         }, $html);
-        // $html = preg_replace('/<audio[^>]+\\>/i', '', $html); // remove audio
-        // $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
-        // $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt
+        $html = preg_replace('/<audio[^>]+\\>/i', '', $html); // remove audio
+        $html = preg_replace('!(<a\s[^>]+>)?<img([^>]+)src=""([^>]*)>(</a>)?!i', '', $html); // remove empty img
+        $html = preg_replace("!(<a\\s[^>]+>)?<img([^>]+)src=''([^>]*)>(</a>)?!i", '', $html); // remove empty img alt
 
         // $regex = '/<[^>]*class="[^"]*\bshare\b[^"]*"[^>]*>(.|\n)*?<\/(.|\n)*>/i';
         // $html = preg_replace($regex, '', $html);

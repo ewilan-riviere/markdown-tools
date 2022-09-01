@@ -9,5 +9,5 @@ body {
 
 @font-face {
   font-family: 'Handlee';
-  src: url(asset('/fonts/Handlee-Regular.ttf'));
+  src: url('/fonts/Handlee-Regular.ttf');
 }

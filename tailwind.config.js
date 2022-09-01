@@ -10,7 +10,7 @@ module.exports = {
         center: true,
       },
       fontFamily: {
-        handlee: ['Handlee, cursive'],
+        handlee: ['Handlee'],
       },
     },
   },

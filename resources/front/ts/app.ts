@@ -1,8 +1,8 @@
 import Alpine from 'alpinejs'
-import colorMode from './modules/color-mode'
+import convert from './modules/convert'
 
 window.Alpine = Alpine
 
-Alpine.data('colorMode', colorMode)
+Alpine.data('convert', convert)
 
 Alpine.start()

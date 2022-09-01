@@ -29,8 +29,6 @@
     <link rel="manifest"
         href="/site.webmanifest">
 
-    <script src="{{ asset('/js/color-mode.js') }}"></script>
-
     @stack('head')
     @stack('styles')
     @livewireStyles

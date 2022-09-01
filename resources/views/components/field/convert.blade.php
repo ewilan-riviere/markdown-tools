@@ -8,12 +8,16 @@ $class = 'block w-full resize-none rounded-md border-0 border-gray-700 bg-gray-8
         {{ $label }}
     </label>
     <div class="relative mt-2">
-        <textarea name="{{ $name }}"
+        <textarea x-model="{{ $attributes['x-model'] }}"
+            name="{{ $name }}"
             id="{{ $name }}"
             placeholder="{{ $placeholder }}"
             spellcheck="false"
             rows="15"
             class="{{ $class }}"></textarea>
+        <button @click="copy('{{ $attributes['x-model'] }}')">
+            copy
+        </button>
         {{-- <app-copy-btn text="value" class="absolute z-40 bottom-3 right-3" /> --}}
     </div>
     <div class="text-gray mt-2 text-sm"

@@ -6,3 +6,8 @@ body {
   @apply text-white bg-gray-900;
   scrollbar-width: thin;
 }
+
+@font-face {
+  font-family: 'Handlee';
+  src: url(asset('/fonts/Handlee-Regular.ttf'));
+}

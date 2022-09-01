@@ -14,6 +14,7 @@ const convert = () => ({
     codeBlockStyle: 'fenced',
   } as Turndown.Options,
   preview: false,
+  copied: false,
 
   init() {
     const originalHtml = '<div><h1>Hello world!</h1><p>You can convert HTML code to Markdown from this area!</p><pre><code>let a = 1</code></pre></div>'
@@ -38,6 +39,22 @@ You can convert HTML code to Markdown from this area!`
       const result = converter.makeHtml(this.markdown)
       this.html = Beautify.html(result)
     }
+  },
+  async copy(type: ConverterType) {
+    this.copied = true
+    let success = false
+    if (this[type] && navigator.clipboard && window.isSecureContext)
+      await navigator.clipboard.writeText(this[type]).then(() => (success = true))
+
+    if (!success)
+      console.error('Error on copy!')
+
+    setTimeout(() => {
+      this.copied = false
+    }, 3500)
+  },
+  togglePreview() {
+    this.preview = !this.preview
   },
 })
 

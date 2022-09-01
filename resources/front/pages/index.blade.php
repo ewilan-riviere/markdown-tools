@@ -1,5 +1,7 @@
 @extends('front::layouts.app')
 
 @section('default')
-    Content
+    <div class="text-center">
+        Content
+    </div>
 @endsection

@@ -4,4 +4,5 @@
 
 body {
   @apply text-white bg-gray-900;
+  scrollbar-width: thin;
 }

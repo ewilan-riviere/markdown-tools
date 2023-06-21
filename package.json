@@ -17,7 +17,7 @@
     "@types/markdown-it": "^12.2.3",
     "@types/showdown": "^2.0.0",
     "@types/turndown": "^5.0.1",
-    "nuxt": "3.0.0-rc.2",
+    "nuxt": "3.4.3",
     "tailwindcss": "^3.0.24",
     "tailwindcss-debug-screens": "^2.2.1"
   },

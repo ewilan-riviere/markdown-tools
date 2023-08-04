@@ -1,7 +1,6 @@
 {
-  "extends": "@antfu",
-  "rules": {
-    "no-unused-vars": "warn",
-    "@typescript-eslint/no-unused-vars": "warn"
-  }
+    "extends": "@antfu",
+    "rules": {
+        "no-console": "warn"
+    }
 }

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+body {
+    @apply text-white bg-gray-900;
+    scrollbar-width: thin;
+}
+
+@font-face {
+    font-family: "Handlee";
+    src: url("/fonts/Handlee-Regular.ttf");
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}

@@ -1,0 +1,54 @@
+import showdown from 'showdown'
+import Turndown from 'turndown'
+import Beautify from 'js-beautify'
+import { ref } from 'vue'
+
+type ConverterType = 'html' | 'markdown'
+
+export function useConvert() {
+  const type = ref<ConverterType>('html')
+  const html = ref<string>('')
+  const markdown = ref<string>('')
+  const turndownOptions = ref<Turndown.Options>({
+    headingStyle: 'atx',
+    hr: '---',
+    codeBlockStyle: 'fenced',
+  })
+  const copied = ref<boolean>(false)
+
+  function initialize() {
+    const originalHtml = '<div><h1>Hello world!</h1><p>You can convert HTML code to Markdown from this area!</p><pre><code>let a = 1</code></pre></div>'
+    const originalMd = `# Hello world!
+You can convert HTML code to Markdown from this area!`
+
+    html.value = originalHtml
+    markdown.value = originalMd
+
+    html.value = Beautify.html(originalHtml)
+    convert('html')
+  }
+  initialize()
+
+  function convert(type: ConverterType) {
+    const converter = new showdown.Converter()
+    const td = new Turndown(turndownOptions.value)
+
+    if (type === 'html') {
+      const result = td.turndown(html.value)
+      markdown.value = Beautify.html(result)
+    }
+    else {
+      const result = converter.makeHtml(markdown.value)
+      html.value = Beautify.html(result)
+    }
+  }
+
+  return {
+    type,
+    html,
+    markdown,
+    turndownOptions,
+    copied,
+    convert,
+  }
+}

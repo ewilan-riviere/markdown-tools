@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Filename & Format
@@ -152,7 +151,6 @@ return [
     */
 
     'ignored_models' => [
-
     ],
 
     /*
@@ -197,7 +195,6 @@ return [
     */
 
     'interfaces' => [
-
     ],
 
     /*
@@ -227,7 +224,6 @@ return [
     |
     */
     'custom_db_types' => [
-
     ],
 
     /*
@@ -294,6 +290,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Use generics syntax
+    |--------------------------------------------------------------------------
+    |
+    | Use generics syntax within DocBlocks,
+    | e.g. `Collection<User>` instead of `Collection|User[]`.
+    |
+    */
+    'use_generics_annotations' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Additional relation types
     |--------------------------------------------------------------------------
     |
@@ -306,6 +313,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Additional relation return types
+    |--------------------------------------------------------------------------
+    |
+    | When using custom relation types its possible for the class name to not contain
+    | the proper return type of the relation. The key of the array is the relationship
+    | method name. The value of the array is the return type of the relation.
+    | e.g. `'relationName' => 'many'`.
+    |
+    */
+    'additional_relation_return_types' => [],
+
+    /*
+    |--------------------------------------------------------------------------
     | Run artisan commands after migrations to generate model helpers
     |--------------------------------------------------------------------------
     |
@@ -315,5 +335,4 @@ return [
     'post_migrate' => [
         // 'ide-helper:models --nowrite',
     ],
-
 ];

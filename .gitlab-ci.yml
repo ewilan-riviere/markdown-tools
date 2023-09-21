@@ -22,6 +22,15 @@ deploy-job:
     - ssh-keyscan $SSH_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh $SSH_USER@$SSH_IP
+    - ssh $SSH_USER@$SSH_IP "
+      . ~/.zshrc &&
+      cd /home/$SSH_USER/www/$CI_PROJECT_NAME &&
+      git pull &&
+      composer install &&
+      composer dump-autoload &&
+      php$PHP_VERSION artisan optimize &&
+      /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm i &&
+      /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm build &&
+      notifier 'Markdown Tools deployed'"
   only:
     - main

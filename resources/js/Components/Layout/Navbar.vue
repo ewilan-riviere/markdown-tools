@@ -14,7 +14,7 @@
         Markdown Tools
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="https://gitlab.com/ewilan-riviere/markdown-tools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 fill-white">
+        <a href="https://gitlab.com/kiwilan/markdown-tools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 fill-white">
           <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <title>Git</title>
             <path

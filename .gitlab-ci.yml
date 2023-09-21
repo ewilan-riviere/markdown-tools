@@ -24,7 +24,7 @@ deploy-job:
   script:
     - ssh $SSH_USER@$SSH_IP "
       . ~/.zshrc &&
-      cd /home/$SSH_USER/www/$CI_PROJECT_NAME &&
+      cd /home/kiwilan/www/markdown-tools &&
       git pull &&
       composer install &&
       composer dump-autoload &&

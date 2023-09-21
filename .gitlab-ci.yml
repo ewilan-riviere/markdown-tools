@@ -24,13 +24,13 @@ deploy-job:
   script:
     - ssh $SSH_USER@$SSH_IP "
       . ~/.zshrc &&
-      cd /home/kiwilan/www/markdown-tools &&
+      cd /home/$SSH_USER/www/$CI_PROJECT_NAME &&
       git pull &&
       composer install &&
       composer dump-autoload &&
       php$PHP_VERSION artisan optimize &&
       /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm i &&
       /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm build &&
-      notifier '$CI_PROJECT_TITLE'"
+      notifier 'Markdown Tools deployed'"
   only:
     - main

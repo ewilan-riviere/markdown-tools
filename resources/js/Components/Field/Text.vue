@@ -52,9 +52,6 @@ watch(
             </div>
           </Transition>
         </div>
-      <!-- <AppButton @click="togglePreview">
-        Preview
-      </AppButton> -->
       </div>
     </div>
   </div>

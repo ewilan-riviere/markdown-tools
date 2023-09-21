@@ -1,6 +1,7 @@
 import showdown from 'showdown'
 import Turndown from 'turndown'
 import Beautify from 'js-beautify'
+import prettify from 'prettify-markdown'
 import { ref } from 'vue'
 
 type ConverterType = 'html' | 'markdown'
@@ -9,6 +10,7 @@ export function useConvert() {
   const type = ref<ConverterType>('html')
   const html = ref<string>('')
   const markdown = ref<string>('')
+  const previewHtml = ref<string>('')
   const turndownOptions = ref<Turndown.Options>({
     headingStyle: 'atx',
     hr: '---',
@@ -17,14 +19,16 @@ export function useConvert() {
   const copied = ref<boolean>(false)
 
   function initialize() {
-    const originalHtml = '<div><h1>Hello world!</h1><p>You can convert HTML code to Markdown from this area!</p><pre><code>let a = 1</code></pre></div>'
-    const originalMd = `# Hello world!
-You can convert HTML code to Markdown from this area!`
+    const originalHtml =
+      '<div><h1>Hello world!</h1><p>You can convert HTML code to Markdown from this area!</p><pre><code>let a = 1</code></pre></div>'
+    const originalMd =
+      '# Hello world! You can convert HTML code to Markdown from this area!'
 
     html.value = originalHtml
     markdown.value = originalMd
 
     html.value = Beautify.html(originalHtml)
+    previewHtml.value = originalHtml
     convert('html')
   }
   initialize()
@@ -35,12 +39,19 @@ You can convert HTML code to Markdown from this area!`
 
     if (type === 'html') {
       const result = td.turndown(html.value)
+      previewHtml.value = html.value
       markdown.value = Beautify.html(result)
     }
     else {
       const result = converter.makeHtml(markdown.value)
       html.value = Beautify.html(result)
+      previewHtml.value = result
     }
+  }
+
+  function format() {
+    // html.value = formatterHtml(html.value)
+    html.value = Beautify.html(html.value)
   }
 
   return {
@@ -50,5 +61,7 @@ You can convert HTML code to Markdown from this area!`
     turndownOptions,
     copied,
     convert,
+    format,
+    previewHtml,
   }
 }

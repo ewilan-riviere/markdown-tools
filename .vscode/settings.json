@@ -1,3 +1,4 @@
 {
-  "laravel-pint.configPath": "vendor/kiwilan/steward-laravel/pint.json"
+  "laravel-pint.configPath": "vendor/kiwilan/steward-laravel/pint.json",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

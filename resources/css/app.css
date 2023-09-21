@@ -7,8 +7,20 @@
 }
 
 body {
-    @apply text-white bg-gray-900;
+    @apply text-white bg-gray-900 min-h-screen;
     scrollbar-width: thin;
+}
+
+header {
+    @apply min-h-[50px];
+}
+
+main {
+    @apply flex flex-1;
+}
+
+footer {
+    @apply min-h-[50px];
 }
 
 @font-face {

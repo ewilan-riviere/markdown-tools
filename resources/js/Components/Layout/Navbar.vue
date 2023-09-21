@@ -1,7 +1,7 @@
 <template>
-  <header class="absolute inset-x-0 top-0 z-50">
+  <header class="absolute inset-x-0 top-0 z-50 container">
     <nav
-      class="flex items-center justify-between p-6 lg:px-8"
+      class="flex items-center justify-between py-6"
       aria-label="Global"
     >
       <div class="flex lg:flex-1">

@@ -1,7 +1,6 @@
 import showdown from 'showdown'
 import Turndown from 'turndown'
 import Beautify from 'js-beautify'
-import prettify from 'prettify-markdown'
 import { ref } from 'vue'
 
 type ConverterType = 'html' | 'markdown'
@@ -50,9 +49,30 @@ export function useConvert() {
   }
 
   function format() {
-    // html.value = formatterHtml(html.value)
-    html.value = Beautify.html(html.value)
+    html.value = formatterHtml(html.value)
+    // html.value = Beautify.html(html.value)
   }
+
+  function formatterHtml(html: string) {
+    const tab = '\t'
+    let result = ''
+    let indent = ''
+
+    html.split(/>\s*</).forEach((element) => {
+      if (element.match( /^\/\w/ ))
+        indent = indent.substring(tab.length)
+
+
+      result += `${indent  }<${  element  }>\r\n`
+
+      if (element.match( /^<?\w[^>]*[^\/]$/ ) && !element.startsWith('input')  )
+        indent += tab
+
+    })
+
+    return result.substring(1, result.length - 3)
+  }
+
 
   return {
     type,

@@ -1,12 +1,11 @@
 # **Markdown Tools** <!-- omit in toc -->
 
 [![php][php-version-src]][php-version-href]
-[![laravel][laravel-version-src]][laravel-versirsion-href]
+[![laravel][laravel-version-src]][laravel-version-href]
 [![node][node-version-src]][node-version-href]
 [![license][license-src]][license-href]
 
--   [**markdown-tools**](https://gitlab.com/kiwilan/markdown-tools): repository
--   [**markdown-tools.git-projects.xyz**](https://markdown-tools.git-projects.xyz): demo
+Demo: [**markdown-tools.git-projects.xyz**](https://markdown-tools.git-projects.xyz)
 
 ## **Setup**
 
@@ -25,7 +24,7 @@ php artisan storage:link
 
 ## License
 
-[MIT License](MIT).
+[MIT](LICENSE)
 
 [laravel-version-src]: https://img.shields.io/badge/dynamic/json?label=Laravel&query=require[%27laravel/framework%27]&url=https://raw.githubusercontent.com/ewilan-riviere/markdown-interpreter/main/composer.json&color=777bb4&logo=laravel&logoColor=ffffff&labelColor=18181b
 [laravel-version-href]: https://laravel.com/

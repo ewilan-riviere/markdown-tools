@@ -67,7 +67,7 @@ deploy-job:
       . ~/.zshrc &&
       cd /var/www/$CI_PROJECT_NAME &&
       git pull &&
-      docker cp dist-$CI_JOB_ID $DOCKER_CONTAINER:/usr/src/app/ &&
+      docker cp dist-$CI_JOB_ID $DOCKER_CONTAINER:/app/ &&
       docker exec $DOCKER_CONTAINER rm -rf dist &&
       docker exec $DOCKER_CONTAINER mv dist-$CI_JOB_ID/dist dist &&
       docker exec $DOCKER_CONTAINER rm -rf dist-$CI_JOB_ID &&

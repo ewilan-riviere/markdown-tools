@@ -69,10 +69,12 @@ deploy-job:
       git pull &&
       docker cp dist-$CI_JOB_ID $DOCKER_CONTAINER:/app/ &&
       docker exec $DOCKER_CONTAINER rm -rf dist &&
-      docker exec $DOCKER_CONTAINER mv dist-$CI_JOB_ID/dist dist &&
-      docker exec $DOCKER_CONTAINER rm -rf dist-$CI_JOB_ID &&
-      docker restart $DOCKER_CONTAINER &&
+      rm -rf dist &&
+      cp dist-$CI_JOB_ID/dist dist &&
       rm -rf dist-$CI_JOB_ID &&
+      docker exec $DOCKER_CONTAINER mv dist dist &&
+      docker restart $DOCKER_CONTAINER &&
+      rm -rf dist &&
       notifier discord '$CI_PROJECT_TITLE deployed'"
   only:
     - main

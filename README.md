@@ -12,11 +12,7 @@ Create `.env` file
 cp .env.example .env
 ```
 
-- `PORT`: internal port of the container (default `3000`)
-- `HOST`: host of the application
-- `HTTPS`: false (`true` or `false`)
-- `ENV`: environment (`development`, `production`, `test`)
-- `APP_PORT`: external port of the container (default `3000`)
+- `APP_PORT`: external port of the container (default `8080`)
 
 Docker compose will use the `.env` file to set environment variables.
 

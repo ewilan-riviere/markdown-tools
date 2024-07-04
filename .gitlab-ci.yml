@@ -1,3 +1,36 @@
+# # A pipeline is composed of independent jobs that run scripts, grouped into stages.
+# # Stages run in sequential order, but jobs within stages run in parallel.
+# #
+# # For more information, see: https://docs.gitlab.com/ee/ci/
+
+# stages:
+#   - deploy
+
+# variables:
+#   NODE_VERSION: "18.17.0"
+
+# deploy-job:
+#   stage: deploy
+#   image: alpine:latest
+#   before_script:
+#     - "command -v ssh-agent >/dev/null || ( apk add --update openssh )"
+#     - eval $(ssh-agent -s)
+#     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+#     - mkdir -p ~/.ssh
+#     - chmod 700 ~/.ssh
+#     - ssh-keyscan -p $SSH_PORT $SSH_IP >> ~/.ssh/known_hosts
+#     - chmod 644 ~/.ssh/known_hosts
+#   script:
+#     - ssh -p $SSH_PORT $SSH_USER@$SSH_IP "
+#       . ~/.zshrc &&
+#       cd /home/$SSH_USER/www/$CI_PROJECT_NAME &&
+#       git pull &&
+#       /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm i &&
+#       /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm build &&
+#       notifier discord 'Markdown Tools deployed'"
+#   only:
+#     - main
+
 # A pipeline is composed of independent jobs that run scripts, grouped into stages.
 # Stages run in sequential order, but jobs within stages run in parallel.
 #
@@ -6,12 +39,9 @@
 stages:
   - deploy
 
-variables:
-  NODE_VERSION: "18.17.0"
-
 deploy-job:
   stage: deploy
-  image: alpine:latest
+  image: node:20.15.0
   before_script:
     - "command -v ssh-agent >/dev/null || ( apk add --update openssh )"
     - eval $(ssh-agent -s)
@@ -20,13 +50,29 @@ deploy-job:
     - chmod 700 ~/.ssh
     - ssh-keyscan -p $SSH_PORT $SSH_IP >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
+    - echo "Installing dependencies..."
+    - apt-get update -qq && apt-get install -y -qq sshpass
+    - apt-get install -y -qq rsync
+    - echo "Setup..."
+    - git clone https://gitlab.com/kiwilan/markdown-tools.git
+    - cd feedrender
+    - npm install -g pnpm
+    - pnpm i
+    - echo "Building..."
+    - pnpm build
+    - echo "Deploying..."
   script:
+    - rsync -azPhhr -e "ssh -p $SSH_PORT" dist $SSH_USER@$SSH_IP:/var/www/$CI_PROJECT_NAME/dist-$CI_JOB_ID
     - ssh -p $SSH_PORT $SSH_USER@$SSH_IP "
       . ~/.zshrc &&
-      cd /home/$SSH_USER/www/$CI_PROJECT_NAME &&
+      cd /var/www/$CI_PROJECT_NAME &&
       git pull &&
-      /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm i &&
-      /home/$SSH_USER/.nvm/versions/node/v$NODE_VERSION/bin/pnpm build &&
-      notifier discord 'Markdown Tools deployed'"
+      docker cp dist-$CI_JOB_ID $DOCKER_CONTAINER:/usr/src/app/ &&
+      docker exec $DOCKER_CONTAINER rm -rf dist &&
+      docker exec $DOCKER_CONTAINER mv dist-$CI_JOB_ID/dist dist &&
+      docker exec $DOCKER_CONTAINER rm -rf dist-$CI_JOB_ID &&
+      docker restart $DOCKER_CONTAINER &&
+      rm -rf dist-$CI_JOB_ID &&
+      notifier discord '$CI_PROJECT_TITLE deployed'"
   only:
     - main

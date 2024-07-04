@@ -1,0 +1,9 @@
+services:
+  markdown-tools:
+    container_name: markdown-tools
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:80"

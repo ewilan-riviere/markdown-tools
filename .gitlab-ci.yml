@@ -34,7 +34,7 @@ deploy-job:
       rm -rf dist &&
       cp -r dist-$CI_JOB_ID/dist dist &&
       rm -rf dist-$CI_JOB_ID &&
-      docker cp -r dist $DOCKER_CONTAINER:/app/ &&
+      docker cp dist $DOCKER_CONTAINER:/app/ &&
       docker restart $DOCKER_CONTAINER &&
       rm -rf dist &&
       notifier discord '$CI_PROJECT_TITLE deployed'"

@@ -55,7 +55,7 @@ deploy-job:
     - apt-get install -y -qq rsync
     - echo "Setup..."
     - git clone https://gitlab.com/kiwilan/markdown-tools.git
-    - cd feedrender
+    - cd markdown-tools
     - npm install -g pnpm
     - pnpm i
     - echo "Building..."

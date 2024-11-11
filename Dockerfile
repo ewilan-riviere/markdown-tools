@@ -11,7 +11,7 @@ RUN npm install -g pnpm
 RUN pnpm install
 RUN pnpm build
 
-FROM nginx:alpine
+FROM nginx:alpine3.20-slim
 
 COPY --from=0 /app/dist /var/www/html
 COPY ./docker/default.conf /etc/nginx/conf.d/default.conf

@@ -12,11 +12,11 @@ Create `.env` file
 cp .env.example .env
 ```
 
-- `APP_PORT`: external port of the container (default `8080`)
+- `APP_PORT`: external port of the container (default `3000`)
 
 Docker compose will use the `.env` file to set environment variables.
 
 ```bash
-docker compose down
-docker compose up -d
+docker compose down --remove-orphans
+docker compose up -d --build
 ```

@@ -1,5 +1,5 @@
 services:
-  markdown-tools:
+  app:
     container_name: markdown-tools
     build:
       context: .
